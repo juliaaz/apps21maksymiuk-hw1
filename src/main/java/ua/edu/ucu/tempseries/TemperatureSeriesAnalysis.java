@@ -35,7 +35,7 @@ public class TemperatureSeriesAnalysis {
         return Math.sqrt(sqrSum / temps.length - avg * avg);
     }
 
-    public double min() throws IllegalArgumentException{
+    public double min() throws IllegalArgumentException {
         checkEmpty();
         double mn = this.temps[0];
         for (double temperature: this.temps) {
@@ -49,7 +49,7 @@ public class TemperatureSeriesAnalysis {
         return temps[temps.length-1];
     }
 
-    public double findTempClosestToZero() throws IllegalArgumentException{
+    public double findTempClosestToZero() throws IllegalArgumentException {
         return findTempClosestToValue(0);
     }
 
@@ -71,7 +71,7 @@ public class TemperatureSeriesAnalysis {
         checkEmpty();
         int size = 0;
         for (int i = 0; i < temps.length; i++) {
-            if (temps[i] < tempValue){
+            if (temps[i] < tempValue) {
                 size = i+1;
             }
         }
@@ -116,11 +116,11 @@ public class TemperatureSeriesAnalysis {
 
     public int addTemps(double... temps) {
         checkMinTemp(temps);
-        int arr1Size = temps.length;
-        int arr2Size = temps.length;
-        double[] tempArr = new double[arr1Size + arr2Size];
-        System.arraycopy(temps, 0, tempArr, 0, arr1Size);
-        System.arraycopy(temps, 0, tempArr, arr1Size, arr2Size);
+        int arrOneSize = temps.length;
+        int arrTwoSize = temps.length;
+        double[] tempArr = new double[arrOneSize + arrTwoSize];
+        System.arraycopy(temps, 0, tempArr, 0, arrOneSize);
+        System.arraycopy(temps, 0, tempArr, arrOneSize, arrTwoSize);
         temps = Arrays.stream(tempArr).sorted().toArray();
         return temps.length;
     }
