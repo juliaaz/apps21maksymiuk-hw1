@@ -345,17 +345,7 @@ public class TemperatureSeriesAnalysisTest {
         seriesAnalysis.average();
     }
 
-    @Test
-    public void testSummaryStatistics() {
-        double[] temperatureSeries = {3.0, -5.0, 1.0, 5.0};
-        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
-        String expResult = "Average - 1,000000; Deviation - 3,741657; Min - -5,000000; Max - 5,000000\n";
-        String actualResult = seriesAnalysis.summaryStatistics().toString();
-        // compare expected result with actual result
-        assertEquals(expResult, actualResult);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
+     @Test(expected = IllegalArgumentException.class)
     public void testSummaryStatisticsWithEmptyArray() {
         double[] temperatureSeries = {};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
@@ -364,12 +354,14 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
-    public void testSummaryStatisticsWithOneElement() {
-        double[] temperatureSeries = {-2.0};
+    public void testSummaryStatistics() {
+        double[] temperatureSeries = {3.0, -5.0, 1.0, 5.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
-        String expResult = "Average - -2,000000; Deviation - 0,000000; Min - -2,000000; Max - -2,000000\n";
-        String actualResult = seriesAnalysis.summaryStatistics().toString();
-        // compare expected result with actual result
-        assertEquals(expResult, actualResult);
+        TempSummaryStatistics statistics = seriesAnalysis.summaryStatistics();
+
+        assertEquals(statistics.getAvgTemp(), 1.0, 0.00001);
+        assertEquals(statistics.getDevTemp(), 3.7416573867739413, 0.00001);
+        assertEquals(statistics.getMinTemp(), -5.0, 0.00001);
+        assertEquals(statistics.getMaxTemp(), 5.0, 0.00001);
     }
 }
