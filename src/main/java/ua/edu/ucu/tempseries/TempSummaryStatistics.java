@@ -13,11 +13,21 @@ public class TempSummaryStatistics {
         this.minTemp = minTemp;
         this.maxTemp = maxTemp;
     }
+    
+        public double getAvgTemp() {
+        return avgTemp;
+    }
 
-    public String toString() {
-        return String.format("Average - %f; "
-                        + "Deviation - %f; Min - %f; Max - %f%n",
-                avgTemp, devTemp, minTemp, maxTemp);
+    public double getDevTemp() {
+        return devTemp;
+    }
+
+    public double getMinTemp() {
+        return minTemp;
+    }
+
+    public double getMaxTemp() {
+        return maxTemp;
     }
 
 }
