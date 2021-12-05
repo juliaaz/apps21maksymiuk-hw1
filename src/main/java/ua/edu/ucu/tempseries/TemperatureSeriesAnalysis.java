@@ -122,7 +122,6 @@ public class TemperatureSeriesAnalysis {
         double[] tempArr = new double[arrOneSize + arrTwoSize];
         System.arraycopy(temperatures, 0, tempArr, 0, arrOneSize);
         System.arraycopy(temperatures, 0, tempArr, arrOneSize, arrTwoSize);
-        temperatures = Arrays.stream(tempArr).sorted().toArray();
-        return temperatures.length;
+        return Arrays.stream(tempArr).sorted().toArray().length;
     }
 }
