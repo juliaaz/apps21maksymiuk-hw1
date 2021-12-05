@@ -3,8 +3,8 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysis {
-    private double[] temps;
     private static final int MINPOSSIBLE = -273;
+    private double[] temps;
 
     public TemperatureSeriesAnalysis() {
         this.temps = new double[0];
