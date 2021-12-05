@@ -106,22 +106,22 @@ public class TemperatureSeriesAnalysis {
         return new TempSummaryStatistics(average(), deviation(), min(), max());
     }
 
-    private void checkMinTemp(double[] temps) {
-        for (double temp: temps) {
+    private void checkMinTemp(double[] temperatures) {
+        for (double temp: temperatures) {
             if (temp < -273) {
                 throw new InputMismatchException();
             }
         }
     }
 
-    public int addTemps(double... temps) {
-        checkMinTemp(temps);
-        int arrOneSize = temps.length;
-        int arrTwoSize = temps.length;
+    public int addTemps(double... temperatures) {
+        checkMinTemp(temperatures);
+        int arrOneSize = temperatures.length;
+        int arrTwoSize = temperatures.length;
         double[] tempArr = new double[arrOneSize + arrTwoSize];
-        System.arraycopy(temps, 0, tempArr, 0, arrOneSize);
-        System.arraycopy(temps, 0, tempArr, arrOneSize, arrTwoSize);
-        temps = Arrays.stream(tempArr).sorted().toArray();
-        return temps.length;
+        System.arraycopy(temperatures, 0, tempArr, 0, arrOneSize);
+        System.arraycopy(temperatures, 0, tempArr, arrOneSize, arrTwoSize);
+        temperatures = Arrays.stream(tempArr).sorted().toArray();
+        return temperatures.length;
     }
 }
