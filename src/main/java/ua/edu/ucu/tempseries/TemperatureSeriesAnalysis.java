@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysis {
     private static final int MINPOSSIBLE = -273;
-    private double CLOSESTDISTANCE = 600;
+    private double ClosestDistance = 600;
     private double[] temps;
 
     public TemperatureSeriesAnalysis() {
@@ -60,8 +60,8 @@ public class TemperatureSeriesAnalysis {
         double closestValue = 0;
         for (double temp: temps) {
             double check = Math.abs(temp - tempValue);
-            if (check < CLOSESTDISTANCE) {
-                CLOSESTDISTANCE = check;
+            if (check < ClosestDistance) {
+                ClosestDistance = check;
                 closestValue = temp;
             }
         }
